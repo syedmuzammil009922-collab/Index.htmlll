@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Are You Mad At Me? ❤️</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ffd6e7, #fff0f6);
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .box {
+        width: 90%;
+        max-width: 500px;
+        padding: 30px;
+        background: white;
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.12);
+    }
+
+    h1 {
+        color: #ff4f87;
+        font-size: 28px;
+    }
+
+    p {
+        color: #555;
+        font-size: 18px;
+    }
+
+    button {
+        border: none;
+        border-radius: 12px;
+        padding: 12px 25px;
+        margin: 8px;
+        font-size: 17px;
+        cursor: pointer;
+        transition: .25s;
+    }
+
+    #yes {
+        background: #ff4f87;
+        color: white;
+    }
+
+    #no {
+        background: #eee;
+        color: #333;
+    }
+
+    input {
+        width: 85%;
+        padding: 13px;
+        border: 2px solid #ff8fb3;
+        border-radius: 12px;
+        font-size: 16px;
+        outline: none;
+    }
+
+    .sorry {
+        font-size: 25px;
+        color: #ff4f87;
+        font-weight: bold;
+        line-height: 1.7;
+    }
+
+    .success {
+        font-size: 24px;
+        color: #ff4f87;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="box" id="app">
+    <h1>Are you mad at me? 🥺❤️</h1>
+    <p id="question">Please tell me honestly...</p>
+
+    <button id="yes" onclick="yesClicked()">Yes 😭</button>
+    <button id="no" onclick="noClicked()">No ❤️</button>
+</div>
+
+<script>
+
+let yesSize = 17;
+let yesClicks = 0;
+
+function yesClicked() {
+    yesClicks++;
+
+    yesSize -= 3;
+
+    if (yesSize < 5) {
+        yesSize = 5;
+    }
+
+    document.getElementById("yes").style.fontSize = yesSize + "px";
+    document.getElementById("yes").style.padding =
+        Math.max(3, yesSize / 2) + "px " +
+        Math.max(5, yesSize) + "px";
+
+    document.getElementById("question").innerHTML =
+        "Pakka naraz ho? 😭<br>Ek baar phir poochta hoon...";
+
+    document.querySelector("h1").innerHTML =
+        "Are you REALLY mad at me? 🥺";
+}
+
+function noClicked() {
+
+    document.getElementById("app").innerHTML = `
+        <h1>Ayii 🥹❤️</h1>
+        <p>Pakaa promise? 👀</p>
+
+        <button onclick="notMad()">
+            Me nahi hoon naraz ❤️
+        </button>
+
+        <button onclick="acting()">
+            Bas natak kar rahi hoon 😭
+        </button>
+    `;
+}
+function acting() {
+
+    document.getElementById("app").innerHTML = `
+        <div class="sorry">
+            SORRY 😭❤️<br>
+            SORRY 🥺❤️<br>
+            SORRY 😭❤️<br>
+            SORRY 🥹❤️<br>
+            SORRY 😭❤️<br>
+            SORRY 🥺❤️<br>
+            SORRY ❤️<br>
+            SORRY 😭❤️<br>
+            SORRY 🥹❤️
+
+            <br><br>
+
+            <button onclick="noClicked()">
+                ← Back ❤️
+            </button>
+        </div>
+    `;
+}
+
+function notMad() {
+
+    document.getElementById("app").innerHTML = `
+        <h1>Ayii acha 😭❤️</h1>
+        <p>Toh I love you bolo 🥺</p>
+
+        <input id="loveInput"
+        type="text"
+        placeholder="Type here...">
+
+        <br><br>
+
+        <button onclick="checkLove()">
+            Continue ❤️
+        </button>
+    `;
+}
+
+function checkLove() {
+
+    let answer = document.getElementById("loveInput").value
+        .trim()
+        .toLowerCase();
+
+    if (answer === "i love you") {
+
+        document.getElementById("app").innerHTML = `
+            <div class="success">
+                <h1>Congratulations! 🎉❤️</h1>
+                <p>
+                    Aapki GF ab naraz nahi hai 😭❤️
+                </p>
+                <p>
+                    Mission Successful! 🫡💕
+                </p>
+            </div>
+        `;
+
+    } else {
+
+        alert('Pehle "I love you" likho 😭❤️');
+    }
+}
+
+</script>
+
+</body>
+</html>
